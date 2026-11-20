@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cbjrpgy1q8la"]
 
 [ext_resource type="PackedScene" uid="uid://br5r2ckil35is" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://coy6x8uc2rt8k" path="res://scenes/ring.tscn" id="2_0wfyh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b1gpb"]
 
@@ -14,3 +15,9 @@ shape = SubResource("WorldBoundaryShape2D_b1gpb")
 
 [node name="Player" parent="." unique_id=493283035 instance=ExtResource("1_o5qli")]
 position = Vector2(552, 234)
+
+[node name="Ring" parent="." unique_id=1469407233 instance=ExtResource("2_0wfyh")]
+position = Vector2(430, 443)
+
+[connection signal="dash" from="Player" to="Ring" method="_on_player_dash"]
+[connection signal="ring" from="Player" to="Ring" method="_on_player_ring"]
