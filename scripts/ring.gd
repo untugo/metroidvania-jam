@@ -28,7 +28,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _pending_impulse != Vector2.ZERO:
 		state.apply_central_impulse(_pending_impulse)
 		_pending_impulse = Vector2.ZERO
-	
+
 
 func teleport_and_launch(target_pos: Vector2, direction: Vector2) -> void:
 	freeze = false

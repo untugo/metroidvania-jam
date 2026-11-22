@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bat2wv1lxk2ll"]
+
+[ext_resource type="Script" uid="uid://ckx3bfht1caww" path="res://debug/debug.gd" id="1_6y12j"]
+
+[node name="DebugUI" type="Node" unique_id=989944291]
+
+[node name="canvas layer" type="CanvasLayer" parent="." unique_id=470304598]
+
+[node name="MarginContainer" type="MarginContainer" parent="canvas layer" unique_id=1766528258]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+
+[node name="debug text" type="Label" parent="canvas layer/MarginContainer" unique_id=375816776]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "PLACEHOLDER"
+script = ExtResource("1_6y12j")
+
+[node name="controls" type="Label" parent="canvas layer/MarginContainer/debug text" unique_id=1479493948]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 93.0
+offset_bottom = 77.0
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "RING - RMB / RB / E
+hold to aim
+release to throw"

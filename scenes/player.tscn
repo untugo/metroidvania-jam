@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://br5r2ckil35is"]
 
-[ext_resource type="Script" uid="uid://c78ani04sma5v" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://c78ani04sma5v" path="res://scripts/player scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://b7n2gxcd8rxmu" path="res://assets/art/icon.svg" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bat2wv1lxk2ll" path="res://debug/debug UI.tscn" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://6341lixl4ox8" path="res://assets/art/arrow.png" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://csmy8ycycfqb0" path="res://scripts/player scripts/character_controller.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dfi1dyr3i54vx" path="res://scripts/player scripts/camera_controller.gd" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(44, 44)
@@ -10,18 +13,63 @@ size = Vector2(44, 44)
 [node name="Player" type="CharacterBody2D" unique_id=493283035]
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435047521]
-shape = SubResource("RectangleShape2D_g2els")
+[node name="Cameras" type="Node2D" parent="." unique_id=1850579589]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838671677]
+[node name="MovementCamera" type="Camera2D" parent="Cameras" unique_id=144124934]
+offset = Vector2(0, -180)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.05
+drag_bottom_margin = 0.05
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="RingCamera" type="Camera2D" parent="Cameras" unique_id=1144879320]
+limit_enabled = false
+position_smoothing_speed = 7.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1838671677]
 scale = Vector2(0.33984378, 0.33984378)
 texture = ExtResource("2_qhqgy")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=435047521]
+shape = SubResource("RectangleShape2D_g2els")
 
 [node name="AimPivot" type="Node2D" parent="." unique_id=1289252302]
 visible = false
 
 [node name="Arrow" type="Sprite2D" parent="AimPivot" unique_id=523096140]
 position = Vector2(100, 0)
-rotation = 3.1415927
+rotation = -3.1415925
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_qhqgy")
+
+[node name="Marker" type="Marker2D" parent="AimPivot" unique_id=619537302]
+position = Vector2(64, -1.08420204e-19)
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+
+[node name="Marker2" type="Marker2D" parent="AimPivot" unique_id=1684678065]
+position = Vector2(-48, -48.000004)
+scale = Vector2(0.00037093257, 0.0047649518)
+
+[node name="Movement Component" type="Node" parent="." unique_id=792971925 node_paths=PackedStringArray("body")]
+script = ExtResource("4_dqkch")
+body = NodePath("..")
+
+[node name="Camera Component" type="Node" parent="." unique_id=364050083 node_paths=PackedStringArray("camera", "body")]
+script = ExtResource("5_qlg0r")
+camera = NodePath("../Cameras/MovementCamera")
+body = NodePath("..")
+
+[node name="DebugUI" parent="." unique_id=731995366 instance=ExtResource("2_tuyoq")]
+
+[node name="debug text" parent="DebugUI/canvas layer/MarginContainer" parent_id_path=PackedInt32Array(731995366, 1766528258) index="0" unique_id=375816776 node_paths=PackedStringArray("body")]
+body = NodePath("../../../..")
+
+[connection signal="dash" from="." to="." method="_on_dash"]
+
+[editable path="DebugUI"]
