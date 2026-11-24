@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cbjrpgy1q8la"]
+
+[ext_resource type="PackedScene" uid="uid://br5r2ckil35is" path="res://scenes/player.tscn" id="1_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://coy6x8uc2rt8k" path="res://scenes/ring.tscn" id="2_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://bprfbx5e0jkk7" path="res://ring_anchor.tscn" id="3_4wyf3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b1gpb"]
+
+[node name="World" type="Node2D" unique_id=554663743]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1414038720]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1795238462]
+position = Vector2(566, 633)
+shape = SubResource("WorldBoundaryShape2D_b1gpb")
+
+[node name="Player" parent="." unique_id=493283035 instance=ExtResource("1_rwgxs")]
+position = Vector2(16, 584)
+
+[node name="Anchor" parent="." unique_id=1321797534 instance=ExtResource("3_4wyf3")]
+position = Vector2(336, 320)
+
+[node name="Anchor2" parent="." unique_id=1260430380 instance=ExtResource("3_4wyf3")]
+position = Vector2(785, 320)
+
+[node name="Ring" parent="." unique_id=1469407233 instance=ExtResource("2_4wyf3")]
+position = Vector2(569, 560)

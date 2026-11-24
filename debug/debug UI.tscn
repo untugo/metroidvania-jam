@@ -25,9 +25,9 @@ script = ExtResource("1_6y12j")
 
 [node name="controls" type="Label" parent="canvas layer/MarginContainer/debug text" unique_id=1479493948]
 layout_mode = 0
-offset_top = 60.0
-offset_right = 93.0
-offset_bottom = 77.0
+offset_top = 160.0
+offset_right = 111.0
+offset_bottom = 217.0
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 12
 text = "RING - RMB / RB / E

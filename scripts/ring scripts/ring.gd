@@ -1,27 +1,32 @@
 class_name Ring
 extends Pickable
 
-enum STATES { HELD, THROWN, LOCKED, RETURNING, DROPPED }
-var state: STATES = STATES.DROPPED
-
-var owner_player: Node2D = null
+#var owner_player: Node2D = null
 var current_anchor: RingAnchor = null
+var current_holder: Node2D = null
 
 
 func _ready() -> void:
 	freeze = true
 
 
-func throw(direction: Vector2, power: float):
-	if state == STATES.HELD or state == STATES.DROPPED:
-		state = STATES.THROWN
-		freeze = false
-		
-		linear_velocity = Vector2.ZERO
-		angular_velocity = 0.0
+func _process(delta: float) -> void:
+	update_position(current_holder)
 
-		apply_central_impulse(direction.normalized() * power)
-		apply_torque_impulse(randf_range(-200, 200))
+
+func pick_up(holder):
+	state = STATES.HELD
+	object.freeze = true
+	#object.visible = disabled for debuging
+	object.angular_velocity = 0.0
+	object.linear_velocity = Vector2.ZERO
+	current_holder = holder
+
+
+func update_position(current_holder):
+	if !current_holder: return
+	object.global_position = current_holder.global_position
+	object.rotation = current_holder.global_rotation
 
 
 func request_lock(anchor: RingAnchor, delta: float):

@@ -21,11 +21,11 @@ var ring_hold_timer: float = 1.0
 var ring_hold_time: float = 1.0
 var target_launch_velocity: Vector2
 
-func _physics_process(delta: float) -> void:
-	aim_pivot.look_at(get_global_mouse_position())
-
-	if _dash_timer > 0.0:
-		_dash_timer -= delta
+#func _physics_process(delta: float) -> void:
+	#aim_pivot.look_at(get_global_mouse_position())
+#
+	#if _dash_timer > 0.0:
+		#_dash_timer -= delta
 
 
 func _unhandled_input(event: InputEvent) -> void:

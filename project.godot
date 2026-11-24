@@ -13,7 +13,7 @@ config_version=5
 config/name="Tale of the bamboo cutter"
 run/main_scene="uid://cbjrpgy1q8la"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://assets/art/icon.svg"
+config/icon="res://assets/textures/icon.svg"
 
 [display]
 
@@ -96,7 +96,8 @@ ACTION_01={
 }
 ACTION_02={
 "deadzone": 0.2,
-"events": []
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(204, 28),"global_position":Vector2(216, 88),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
 }
 ACTION_03={
 "deadzone": 0.2,
@@ -106,6 +107,15 @@ ACTION_04={
 "deadzone": 0.2,
 "events": []
 }
+
+[layer_names]
+
+2d_physics/layer_1="Environement"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Interactive"
+2d_physics/layer_5="Debris"
+2d_physics/layer_6="Ring"
 
 [physics]
 
