@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Ring
 
 @export var impulse: float = 1.042
 
@@ -8,7 +8,7 @@ var _pending_impulse: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
-	gravity_scale = 0.0
+	gravity_scale = 2.0
 	linear_damp = 2.0
 
 

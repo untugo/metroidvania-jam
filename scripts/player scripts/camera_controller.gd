@@ -5,7 +5,7 @@ extends Node
 @export var body: CharacterBody2D
 
 #@export var alt_camera: Camera2D
-#@export var marker: Marker2D
+@export var marker: Marker2D
 
 var min_zoom: Vector2 = Vector2(1.3, 1.3)
 var max_zoom: Vector2 = Vector2(0.92, 0.92)
@@ -57,11 +57,12 @@ func _process(delta: float) -> void:
 		#target_zoom = base_zoom
 
 	camera.zoom = camera.zoom.lerp(target_zoom, delta * 0.8)
+	#update_ring_camera(delta)
 
 #func update_ring_camera(delta):
 	##if !alt_camera: return
 	##if alt_camera.is_current():
-	#
+	
 	#var target_position: Vector2 = marker.global_position
 	#camera.drag_horizontal_enabled = false
 	#camera.global_position = lerp(camera.global_position, target_position, 150 * delta)

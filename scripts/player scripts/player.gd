@@ -6,10 +6,10 @@ signal dash()
 const LAUNCH_POWER = 800.0
 const DASH_DURATION = 0.20
 
-@export var ring_state: bool = false
-@onready var aim_pivot: Node2D = $AimPivot
-@onready var ring_node: RigidBody2D = get_node_or_null("../Ring")
-@onready var radius_area: Area2D = ring_node.get_node_or_null("RadiusArea") if ring_node else null
+#@export var ring_state: bool = false
+#@onready var aim_pivot: Node2D = $AimPivot
+#@onready var ring_node: RigidBody2D = get_node_or_null("../Ring")
+#@onready var radius_area: Area2D = ring_node.get_node_or_null("RadiusArea") if ring_node else null
 
 #could make a cleaner camera system
 @onready var ring_camera: Camera2D = $Cameras/RingCamera
@@ -23,7 +23,7 @@ var target_launch_velocity: Vector2
 
 func _physics_process(delta: float) -> void:
 	aim_pivot.look_at(get_global_mouse_position())
-	
+
 	if _dash_timer > 0.0:
 		_dash_timer -= delta
 
@@ -48,12 +48,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			emit_signal("dash")
 
 
-func start_aiming():
-	#if ring_state: 
-	ring_state = true
-	aim_pivot.visible = true
-	Engine.time_scale = 0.2
-	#ring_camera.make_current()
+#func start_aiming():
+	##if ring_state: 
+	#ring_state = true
+	#aim_pivot.visible = true
+	#Engine.time_scale = 0.2
+	##ring_camera.make_current()
 
 
 func release_ring():
@@ -82,7 +82,7 @@ func release_ring():
 		#Engine.time_scale = 1.0
 
 
-func is_in_ring_radius() -> bool:
-	if not radius_area:
-		return false
-	return radius_area.overlaps_body(self)
+#func is_in_ring_radius() -> bool:
+	#if not radius_area:
+		#return false
+	#return radius_area.overlaps_body(self)
