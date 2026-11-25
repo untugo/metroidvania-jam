@@ -22,7 +22,7 @@ shape = SubResource("WorldBoundaryShape2D_b1gpb")
 position = Vector2(-112, 584)
 
 [node name="Anchor" parent="." unique_id=1321797534 instance=ExtResource("3_4wyf3")]
-position = Vector2(336, 320)
+position = Vector2(352, 320)
 
 [node name="Anchor2" parent="." unique_id=1260430380 instance=ExtResource("3_4wyf3")]
 position = Vector2(785, 320)

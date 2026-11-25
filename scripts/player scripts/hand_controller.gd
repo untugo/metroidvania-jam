@@ -68,6 +68,10 @@ func try_pick():
 			pick_up(object)
 			return
 
+		if object.state == object.STATES.LOCKED:
+			pick_up(object)
+			return
+
 
 func pick_up(object: Pickable):
 	if !object or object.state == object.STATES.HELD: return

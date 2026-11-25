@@ -31,7 +31,7 @@ func update_position(current_holder):
 
 
 func request_lock(anchor: Marker2D, delta: float):
-	if state == STATES.DROPPED: return
+	if state == STATES.DROPPED or state == STATES.HELD: return
 	
 	current_anchor = anchor
 	state = STATES.LOCKED

@@ -3,6 +3,7 @@
 class_name Pickable
 extends RigidBody2D
 
+@export var apply_torque_on_throw: bool = false
 enum STATES { HELD, THROWN, LOCKED, RETURNING, DROPPED }
 var state: STATES = STATES.DROPPED
 
@@ -35,7 +36,8 @@ func throw(direction: Vector2, power: float):
 		angular_velocity = 0.0
 
 		apply_central_impulse(direction.normalized() * power)
-		apply_torque_impulse(randf_range(-200, 200))
+		if apply_torque_on_throw:
+			apply_torque_impulse(randf_range(-200, 200))
 
 
 func drop():

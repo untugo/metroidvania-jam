@@ -9,6 +9,12 @@ extends Pickable
 #it respwans shortly after tho
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _ready() -> void:
+	apply_torque_on_throw = false
+
+
+func pick_up(holder):
+	state = STATES.HELD
+	object.angular_velocity = 0.0
+	object.linear_velocity = Vector2.ZERO
+	current_holder = holder
