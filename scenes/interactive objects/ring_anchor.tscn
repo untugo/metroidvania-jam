@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bprfbx5e0jkk7"]
+
+[ext_resource type="Texture2D" uid="uid://biolflwvf70p8" path="res://assets/textures/anchor/anchor 02.png" id="1_imk25"]
+[ext_resource type="Texture2D" uid="uid://c6ojepb277h1s" path="res://assets/textures/anchor/anchor 01.png" id="1_qbw4l"]
+[ext_resource type="Script" uid="uid://cjxfalp000n3q" path="res://scripts/object scripts/ring_anchor.gd" id="1_v56c4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6s0i"]
+transparency = 1
+albedo_color = Color(0, 0.95065695, 0.9481433, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_n3pyu"]
+material = SubResource("StandardMaterial3D_i6s0i")
+radial_segments = 4
+rings = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ee0uf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6s0i"]
+radius = 48.0
+
+[node name="Ring Anchor" type="Node2D" unique_id=1321797534]
+script = ExtResource("1_v56c4")
+
+[node name="test" type="Node2D" parent="." unique_id=467073714]
+visible = false
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="test" unique_id=437777534]
+mesh = SubResource("SphereMesh_n3pyu")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="test" unique_id=389552321]
+scale = Vector2(0.67999995, 0.67999995)
+mesh = SubResource("SphereMesh_n3pyu")
+texture = SubResource("ViewportTexture_ee0uf")
+
+[node name="anchor point" type="Marker2D" parent="." unique_id=1622480089]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="outer layer" type="Node2D" parent="." unique_id=772418105]
+
+[node name="left" type="Sprite2D" parent="outer layer" unique_id=1667006416]
+position = Vector2(-15.999999, -5.684342e-14)
+rotation = -3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_imk25")
+
+[node name="right" type="Sprite2D" parent="outer layer" unique_id=122173018]
+position = Vector2(15.999999, -5.684343e-14)
+rotation = 3.1415927
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_imk25")
+
+[node name="up" type="Sprite2D" parent="outer layer" unique_id=1166258655]
+position = Vector2(0, -8)
+rotation = 1.5707964
+scale = Vector2(0.049999997, 0.049999997)
+texture = ExtResource("1_imk25")
+
+[node name="down" type="Sprite2D" parent="outer layer" unique_id=875537945]
+position = Vector2(0, 8)
+scale = Vector2(0.050000004, 0.050000004)
+texture = ExtResource("1_imk25")
+
+[node name="active" type="Sprite2D" parent="." unique_id=1071953929]
+rotation = -3.1415925
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_qbw4l")
+
+[node name="Anchor Area" type="Area2D" parent="." unique_id=830385554]
+collision_layer = 8
+collision_mask = 32
+
+[node name="collision" type="CollisionShape2D" parent="Anchor Area" unique_id=215319306]
+shape = SubResource("CircleShape2D_i6s0i")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="debug hint" type="Label" parent="." unique_id=250685966]
+offset_left = -61.0
+offset_top = 32.0
+offset_right = 103.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 12
+text = "PRESS  F  TO UNLOCK"
+
+[connection signal="body_entered" from="Anchor Area" to="." method="_on_anchor_area_body_entered"]
+[connection signal="body_exited" from="Anchor Area" to="." method="_on_anchor_area_body_exited"]

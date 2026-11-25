@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c0gd3dcg2h2cd"]
+
+[ext_resource type="Texture2D" uid="uid://b7n2gxcd8rxmu" path="res://assets/textures/icon.svg" id="1_g2tbl"]
+[ext_resource type="Script" uid="uid://dymrx8lffif2f" path="res://scripts/object scripts/platform.gd" id="1_gf13d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6s0i"]
+size = Vector2(126, 20)
+
+[node name="Platform" type="RigidBody2D" unique_id=18895558]
+collision_layer = 25
+mass = 0.005
+script = ExtResource("1_gf13d")
+
+[node name="Label" type="Label" parent="." unique_id=1176007639]
+visible = false
+offset_left = -21.0
+offset_top = 8.0
+offset_right = 22.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 8
+text = "PLATFORM"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=778719235]
+scale = Vector2(1.02, 0.18000184)
+texture = ExtResource("1_g2tbl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464846201]
+shape = SubResource("RectangleShape2D_i6s0i")

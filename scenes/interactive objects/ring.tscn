@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://coy6x8uc2rt8k"]
 
 [ext_resource type="Texture2D" uid="uid://b7n2gxcd8rxmu" path="res://assets/textures/icon.svg" id="1_03kdj"]
-[ext_resource type="Script" uid="uid://d1f1kjgh5tm68" path="res://scripts/ring scripts/ring (old).gd" id="1_f7lrs"]
+[ext_resource type="Script" uid="uid://dlfv1ixri8th5" path="res://scripts/ring scripts/ring.gd" id="1_f7lrs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pdoe"]
 radius = 320.09998
@@ -20,7 +20,7 @@ linear_damp = 1.3
 script = ExtResource("1_f7lrs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=366400698]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.14, 0.14)
 texture = ExtResource("1_03kdj")
 
 [node name="RadiusArea" type="Area2D" parent="." unique_id=2066101076]
@@ -32,7 +32,7 @@ debug_color = Color(1, 1, 1, 0.05882353)
 [node name="RingReachArea" type="Area2D" parent="." unique_id=326622059]
 
 [node name="ColisionShape2D" type="CollisionShape2D" parent="RingReachArea" unique_id=515231166]
-scale = Vector2(1.0040632, 1)
+scale = Vector2(1.0015866, 1)
 shape = SubResource("CircleShape2D_b1gpb")
 debug_color = Color(0.91305107, 0.6282566, 3.85046e-07, 0)
 

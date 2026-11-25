@@ -11,7 +11,8 @@ func _process(delta: float) -> void:
 	str("velocity X: " + "%d" % body.velocity.x) + "\n" +
 	str("velocity Y: " + "%d" % body.velocity.y) + "\n" +
 	"proximity objects: " + str(hand.proximity_objects.size()) + "\n" +
-	"held object: " + str(hand.held_object)
+	"held object: " + str(hand.held_object) + "\n" +
+	"previously held object: " + str(hand.previous_held_object)
 
 
 )

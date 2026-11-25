@@ -45,6 +45,7 @@ texture = ExtResource("2_qhqgy")
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="AimPivot" type="Node2D" parent="." unique_id=1289252302]
+visible = false
 
 [node name="Arrow" type="Sprite2D" parent="AimPivot" unique_id=523096140]
 position = Vector2(100, 0)

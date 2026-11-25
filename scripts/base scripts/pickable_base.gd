@@ -5,15 +5,14 @@ extends RigidBody2D
 
 enum STATES { HELD, THROWN, LOCKED, RETURNING, DROPPED }
 var state: STATES = STATES.DROPPED
-var object = self
 
-func _process(delta: float) -> void:
-	print(state)
-
+var object: RigidBody2D = self
+var current_holder: Node2D
 
 func _ready() -> void:
 	gravity_scale = 2.0
 	linear_damp = 2.0
+	freeze = false
 
 
 #right now the holder is set from the player's "hand" when calling pick_up()
@@ -23,11 +22,12 @@ func pick_up(holder):
 	object.freeze = true
 	object.angular_velocity = 0.0
 	object.linear_velocity = Vector2.ZERO
+	current_holder = holder
 
 
 func throw(direction: Vector2, power: float):
 	if state == STATES.HELD or state == STATES.DROPPED:
-		object.current_holder = null #there has to be a better way to do this
+		current_holder = null #there has to be a better way to do this
 		state = STATES.THROWN
 		freeze = false
 		

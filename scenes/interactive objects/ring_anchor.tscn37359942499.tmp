@@ -18,7 +18,7 @@ rings = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6s0i"]
 radius = 48.0
 
-[node name="Anchor" type="Node2D" unique_id=1321797534]
+[node name="Ring Anchor" type="Node2D" unique_id=1321797534]
 script = ExtResource("1_v56c4")
 
 [node name="test" type="Node2D" parent="." unique_id=467073714]
@@ -66,10 +66,12 @@ rotation = -3.1415925
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_qbw4l")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=830385554]
+[node name="Anchor Area" type="Area2D" parent="." unique_id=830385554]
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=215319306]
+[node name="collision" type="CollisionShape2D" parent="Anchor Area" unique_id=215319306]
 shape = SubResource("CircleShape2D_i6s0i")
 debug_color = Color(1, 1, 1, 0)
+
+[connection signal="body_entered" from="Anchor Area" to="." method="_on_anchor_area_body_entered"]

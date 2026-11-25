@@ -2,12 +2,13 @@ class_name Ring
 extends Pickable
 
 #var owner_player: Node2D = null
-var current_anchor: RingAnchor = null
-var current_holder: Node2D = null
+var current_anchor: Marker2D = null
 
 
 func _ready() -> void:
-	freeze = true
+	gravity_scale = 2.0
+	linear_damp = 2.0
+	freeze = false
 
 
 func _process(delta: float) -> void:
@@ -29,8 +30,8 @@ func update_position(current_holder):
 	object.rotation = current_holder.global_rotation
 
 
-func request_lock(anchor: RingAnchor, delta: float):
-	if not anchor: return
+func request_lock(anchor: Marker2D, delta: float):
+	if state == STATES.DROPPED: return
 	
 	current_anchor = anchor
 	state = STATES.LOCKED
